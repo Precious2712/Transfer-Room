@@ -50,7 +50,7 @@ export function AnimatedBackground() {
   }, [])
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br from-blue-500 via-indigo-50 to-purple-50">
       {elements.map((element) => (
         <motion.div
           key={element.id}

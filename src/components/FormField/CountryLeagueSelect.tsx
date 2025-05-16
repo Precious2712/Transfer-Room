@@ -3,7 +3,7 @@
 import { type Control, useWatch } from "react-hook-form"
 import { FormFieldRenderer } from "./FormFieldRenderer"
 import { countryClubOptions, countryLeagueMap, type CountryClub } from "@/data/country-club/clubs"
-import { getTeamsForLeague } from "@/data/signupForm/team"
+import { getTeamsForLeague } from "@/data/country-club/team"
 import { useEffect } from "react"
 import type { SignupFormData } from "@/data/signup-schema/schema"
 import { motion } from "framer-motion"

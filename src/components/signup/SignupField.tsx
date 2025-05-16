@@ -64,8 +64,8 @@ export function SignupField() {
     const standardFields = userSignup.filter((field) => !excludedFields.includes(field.name))
 
     return (
-        <AnimatedCard className="w-full max-w-3xl mx-auto shadow-lg backdrop-blur-sm bg-white/90 !mt-0 !pt-0">
-            <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-700 text-white ">
+        <AnimatedCard className="w-full max-w-2xl mx-auto shadow-lg backdrop-blur-sm b-white/90 !mt-0 !pt-0">
+            <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-2 ">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -165,7 +165,6 @@ export function SignupField() {
                                     <CountryLeagueSelect control={form.control} setValue={form.setValue} />
                                 </AnimatedFormField>
 
-                                {/* Any remaining standard fields */}
                                 {standardFields.map((field, index) => (
                                     <AnimatedFormField key={field.name} index={4 + index}>
                                         <FormFieldRenderer {...field} control={form.control} />
@@ -174,12 +173,12 @@ export function SignupField() {
 
                                 <AnimatedFormField index={5}>
                                     <div className="flex gap-4 pt-2">
-                                        <AnimatedButton type="button" variant="outline" className="flex-1" onClick={() => form.reset()}>
+                                        <AnimatedButton type="button" variant="outline" className="flex-1 cursor-pointer" onClick={() => form.reset()}>
                                             Reset
                                         </AnimatedButton>
                                         <AnimatedButton
                                             type="submit"
-                                            className="flex-1 bg-blue-600 hover:bg-blue-700"
+                                            className="flex-1 bg-blue-600 hover:bg-blue-800 cursor-pointer"
                                             disabled={isSubmitting}
                                         >
                                             {isSubmitting ? (

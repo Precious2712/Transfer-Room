@@ -1,4 +1,4 @@
-import { CountryClub, countryLeagueMap } from "../country-club/clubs"
+import { CountryClub, countryLeagueMap } from "./clubs"
 
 export const leagueTeamsMap: Record<string, string[]> = {
   [countryLeagueMap[CountryClub.ENGLAND]]: [
