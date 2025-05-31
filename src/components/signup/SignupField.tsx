@@ -1,5 +1,5 @@
 "use client"
-
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { signUpFormSchema, type SignupFormData } from "@/data/signup-schema/schema"
@@ -18,8 +18,9 @@ import { AnimatedCard } from "../ui/animateds/animated-card"
 import axios from "axios"
 
 export function SignupField() {
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [isSuccess, setIsSuccess] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const router = useRouter();
 
     const form = useForm<SignupFormData>({
         resolver: zodResolver(signUpFormSchema),
@@ -51,6 +52,9 @@ export function SignupField() {
 
             setIsSuccess(true);
             toast.success('Signup successful! ✅');
+            setTimeout(() => {
+                router.push("/login-page");
+            }, 2000);
         } catch (error) {
             console.error("Signup error:", error);
             toast.error("Signup failed. Please try again.");

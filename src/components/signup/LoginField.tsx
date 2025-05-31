@@ -9,9 +9,11 @@ import { LoginFieldRendered } from '../FormField/LoginFieldRendered';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export function LoginField() {
     const [success, setSuccess] = useState(false);
+    const router = useRouter();
     const formItemVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: (i: number) => ({
@@ -41,10 +43,23 @@ export function LoginField() {
             const loginApi = await axios.post('http://localhost:4000/users/login', values);
             const res = loginApi.data;
             console.log('login', res);
+            const id = res.user._id;
+            localStorage.setItem('_id', id);
+            const token = res.token
+            localStorage.setItem('token', token);
+            console.log(token);
+            if (loginApi) {
+                toast('Log in successful');
+                router.push("/home");
+            };
         } catch (error) {
-            console.log('error', error);
-            toast('An error has occur');
-        }finally {
+            console.log('error_msg', error);
+            
+            if (error) {
+                toast(`Invalid credentials`);
+                router.push("/login-page");
+            }
+        } finally {
             setSuccess(false);
         }
     }

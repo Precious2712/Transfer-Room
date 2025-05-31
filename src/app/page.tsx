@@ -8,7 +8,7 @@ export default function Page() {
       <AnimatedBackground />
       <main className="relative min-h-screen pt-0 pb-12 px-4">
         <div className="max-w-5xl mx-auto mb-8">
-          <h1 className="text-center text-gray-600 lg:text-2xl font-bold">Complete the form below to signup</h1>
+          {/* <h1 className="text-center text-gray-600 lg:text-2xl font-bold">Complete the form below to signup</h1> */}
         </div>
         <SignupField />
       </main>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { LoginField } from "@/components/signup/LoginField"
 
-export default function Home() {
+export default function LoginPage() {
   return (
     <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 min-h-screen flex flex-col justify-center items-center p-4 relative overflow-hidden">
 
