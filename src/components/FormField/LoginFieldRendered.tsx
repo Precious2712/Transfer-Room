@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Control } from "react-hook-form";
 import { LoginFormData } from "@/data/signup-schema/schema";
-import { EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 
 type LoginFieldRenderedProps = {
@@ -71,12 +71,18 @@ export function LoginFieldRendered({
                                 <FormControl>
                                     <div className="relative">
                                         <Input
-                                            type={`${show ? 'text' : 'password'}`}
+                                            type={show ? 'text' : 'password'}
                                             placeholder={placeholder}
                                             required={required}
                                             {...field}
                                         />
-                                        <EyeOff onClick={handlePassword} className="absolute top-2 right-0" />
+                                        <button
+                                            type="button"
+                                            onClick={handlePassword}
+                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+                                        >
+                                            {show ? <EyeOff size={18} /> : <Eye size={18} />}
+                                        </button>
                                     </div>
                                 </FormControl>
                                 <FormDescription>Password must be secure.</FormDescription>

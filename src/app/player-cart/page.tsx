@@ -1,11 +1,11 @@
 "use client";
-
+import toast from "react-hot-toast";
 import { FooterAndCtaSection } from "@/components/ui/animateds/FooterAndCtaSection";
 import { NavBar } from "@/components/ui/animateds/NavBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import axios from "axios";
-import { User, MapPin, Award, Target, TrendingUp, Zap, DollarSign } from "lucide-react";
+import { MapPin, Target, TrendingUp, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface PlayerProp {
@@ -32,29 +32,39 @@ export default function PlayerCards() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    const fetchPlayers = async () => {
+        try {
+            const id = localStorage.getItem('_id');
+            if (!id) throw new Error("User ID not found");
+
+            const response = await axios.get<PlayerProp[]>(`http://localhost:4000/wallet/user/${id}`);
+            console.log(response);
+
+            setPlayers(response.data);
+        } catch (err) {
+            console.error("Error fetching players:", err);
+            setError("Failed to load players");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchPlayers = async () => {
-            try {
-                const id = localStorage.getItem('_id');
-                if (!id) throw new Error("User ID not found");
-
-                const response = await axios.get<PlayerProp[]>(`http://localhost:4000/wallet/user/${id}`);
-                console.log(response);
-
-                setPlayers(response.data);
-            } catch (err) {
-                console.error("Error fetching players:", err);
-                setError("Failed to load players");
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchPlayers();
     }, []);
 
-    const handleDelete = (id: string) => {
-        alert(`alert ${id}`)
+    const handleDelete = async (id: string) => {
+        try {
+            const remove = await axios.delete(`http://localhost:4000/wallet/delete/${id}`);
+            console.log(remove, 'remove');
+            toast.success('item successfully deleted!!');
+            await fetchPlayers();
+        } catch (error) {
+            console.log(error);
+            if (error) {
+                toast.error(`An error has occur`);
+            }
+        }
     }
 
     if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
@@ -71,13 +81,13 @@ export default function PlayerCards() {
                         <p className="text-gray-600  ">Your current squad</p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    <div className="mx-auto w-[90%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                         {players.map((player) => {
                             const positionColor = positionColors[player.position as keyof typeof positionColors] || "bg-gray-100 text-gray-800";
 
                             return (
-                                <Card key={player._id} className="hover:shadow-md transition-shadow ">
-                                    <CardContent className="py-1">
+                                <Card key={player._id} className="w-[100%] hover:shadow-md transition-shadow bg-blue-900">
+                                    <CardContent className="py-2">
                                         <div className="flex items-center gap-3 mb-4">
                                             <div className="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center">
                                                 <span className="font-medium text-gray-700">
@@ -121,7 +131,7 @@ export default function PlayerCards() {
                                                 €{(player.price).toLocaleString()}K
                                             </div>
                                         </div>
-                                        <Button onClick={()=>handleDelete(player._id)} className="w-full mt-6 cursor-pointer">remove</Button>
+                                        <Button onClick={() => handleDelete(player._id)} className="w-full mt-6 cursor-pointer">remove</Button>
                                     </CardContent>
                                 </Card>
                             );

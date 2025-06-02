@@ -44,12 +44,10 @@ export function LoginField() {
         try {
             const loginApi = await axios.post('http://localhost:4000/users/login', values);
             const res = loginApi.data;
-            console.log('login', res);
             const id = res.user._id;
             localStorage.setItem('_id', id);
             const token = res.token
             localStorage.setItem('token', token);
-            console.log(token);
             const wallet = res.user.wallet
             console.log(wallet);
             setWalletBalance(wallet);
