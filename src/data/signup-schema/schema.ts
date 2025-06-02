@@ -16,11 +16,11 @@ export const signUpFormSchema = z.object({
     }),
     password: z.string().
         min(8, 'minimun is 8').max(8, 'maximum is 8'),
-    contact: z.coerce.number({
-        required_error: 'Contact is required',
-        invalid_type_error: 'Contact must be a number',
-    }).
-    min(11, 'minimum contact is 11'),
+    // contact: z.coerce.number({
+    //     required_error: 'Contact is required',
+    //     invalid_type_error: 'Contact must be a number',
+    // }).
+    // min(11, 'minimum contact is 11'),
     countryClub: z.enum(['Spain', 'England', 'France', 'Italy', 'Germany']),
     league: z.string().min(1, 'Please select a league'),
     team: z.string()

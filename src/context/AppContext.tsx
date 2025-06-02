@@ -5,6 +5,7 @@ import { createContext, useContext, useState, ReactNode, useEffect } from 'react
 
 type AppContextType = {
   handleSelectClub: (club: string) => void;
+  refreshUser: () => void;
   user: any | null;
   loading: boolean;
   error: string | null;
@@ -14,6 +15,8 @@ type AppContextType = {
   france: any;
   germany: any;
   selectedClub: string;
+  walletBalance: number;
+  setWalletBalance: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -32,6 +35,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const [italy, setItaly] = useState();
   const [france, setFrance] = useState();
   const [germany, setGermany] = useState();
+  let [walletBalance, setWalletBalance] = useState<number>(0);
 
   const getUser = async () => {
     try {
@@ -77,6 +81,14 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     console.log('Selected club:', selectedClub);
   }
 
+  const refreshUser = async () => {
+    getUser();
+  };
+
+  useEffect(() => {
+    refreshUser();
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
@@ -89,7 +101,10 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         spain,
         italy,
         france,
-        germany
+        germany,
+        walletBalance,
+        setWalletBalance,
+        refreshUser,
       }}
     >
       {children}

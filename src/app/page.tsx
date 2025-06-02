@@ -1,6 +1,7 @@
 import { SignupField } from "@/components/signup/SignupField";
 
 import { AnimatedBackground } from "@/components/FormField/animated-background";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -11,6 +12,9 @@ export default function Page() {
           {/* <h1 className="text-center text-gray-600 lg:text-2xl font-bold">Complete the form below to signup</h1> */}
         </div>
         <SignupField />
+        <Link href='/login-page'>
+          <p className="text-center underline underline-blue-500 mt-7">Already have an account, login!!</p>
+        </Link>
       </main>
     </>
   )

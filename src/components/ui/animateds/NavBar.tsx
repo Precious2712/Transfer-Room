@@ -4,12 +4,21 @@ import { AlignJustify, Zap } from "lucide-react"
 import { Button } from "../button"
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from 'next/navigation';
 
 export function NavBar() {
     const [show, setShow] = useState(false);
+    const router = useRouter();
 
     const displayNavBar = () => {
         setShow(!show);
+    }
+
+    function handleLogOut() {
+        localStorage.removeItem('token');
+        setTimeout(() => {
+            router.push('/');
+        }, 2000);
     }
 
     return (
@@ -45,7 +54,8 @@ export function NavBar() {
                                 { label: "Italy", href: "/italy" },
                                 { label: "France", href: "/france" },
                                 { label: "Germany", href: "/germany" },
-                                { label: "Wallet", href: "/wallet" }
+                                { label: "Wallet", href: "/wallet" },
+                                { label: "Player cart", href: "/player-cart" }
                             ].map((item, index) => (
                                 <Link href={item.href} key={item.label}>
                                     <motion.div
@@ -66,13 +76,15 @@ export function NavBar() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.3, duration: 0.5 }}
                         >
-                            <Button variant="ghost" className="text-slate-300 hover:text-white">
-                                Login
+                            <Button onClick={handleLogOut} variant="ghost" className="text-slate-300 hover:text-white cursor-pointer">
+                                Logout
                             </Button>
                             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
-                                <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white">
-                                    sign up
-                                </Button>
+                                <Link href='/'>
+                                    <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white cursor-pointer">
+                                        sign up
+                                    </Button>
+                                </Link>
                             </motion.div>
 
                         </motion.div>
@@ -92,7 +104,8 @@ export function NavBar() {
                             { label: "Italy", href: "/italy" },
                             { label: "France", href: "/france" },
                             { label: "Germany", href: "/germany" },
-                            { label: "Wallet", href: "/wallet" }
+                            { label: "Wallet", href: "/wallet" },
+                            { label: "Player cart", href: "/player-cart" }
                         ].map((item, index) => (
                             <Link href={item.href} key={item.label}>
                                 <motion.div
@@ -113,13 +126,15 @@ export function NavBar() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
                     >
-                        <Button variant="ghost" className="text-slate-300 hover:text-white">
-                            Login
+                        <Button onClick={handleLogOut} variant="ghost" className="text-slate-300 hover:text-white cursor-pointer">
+                            Logout
                         </Button>
                         <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
-                            <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white">
-                                sign up
-                            </Button>
+                            <Link href='/'>
+                                <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white cursor-pointer">
+                                    sign up
+                                </Button>
+                            </Link>
                         </motion.div>
 
                     </motion.div>

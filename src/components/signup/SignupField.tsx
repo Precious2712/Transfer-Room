@@ -29,7 +29,6 @@ export function SignupField() {
             lastname: "",
             email: "",
             password: "",
-            contact: 0,
             countryClub: undefined,
             league: "",
             team: "",
@@ -40,8 +39,7 @@ export function SignupField() {
         setIsSubmitting(true)
         try {
             const payload = {
-                ...values,
-                contact: String(values.contact)
+                ...values
             }
 
             const signupApi = await axios.post('http://localhost:4000/users/register', payload);
@@ -64,7 +62,7 @@ export function SignupField() {
         }
     }
 
-    const excludedFields = ["countryClub", "league", "team", "firstname", "lastname", "email", "contact"]
+    const excludedFields = ["countryClub", "league", "team", "firstname", "lastname", "email"]
     const standardFields = userSignup.filter((field) => !excludedFields.includes(field.name))
 
     return (
@@ -155,10 +153,10 @@ export function SignupField() {
                                             control={form.control}
                                         />
                                         <FormFieldRenderer
-                                            name="contact"
-                                            type="number"
-                                            label="Contact"
-                                            placeholder="Enter your contact"
+                                            name="password"
+                                            type="password"
+                                            label="Enter password"
+                                            placeholder="Enter your password"
                                             required={true}
                                             control={form.control}
                                         />

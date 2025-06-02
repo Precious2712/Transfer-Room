@@ -10,8 +10,10 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAppContext } from '@/context/AppContext';
 
 export function LoginField() {
+    const {setWalletBalance} = useAppContext();
     const [success, setSuccess] = useState(false);
     const router = useRouter();
     const formItemVariants = {
@@ -48,6 +50,11 @@ export function LoginField() {
             const token = res.token
             localStorage.setItem('token', token);
             console.log(token);
+            const wallet = res.user.wallet
+            console.log(wallet);
+            setWalletBalance(wallet);
+            
+            localStorage.setItem('wallet', wallet);
             if (loginApi) {
                 toast('Log in successful');
                 router.push("/home");

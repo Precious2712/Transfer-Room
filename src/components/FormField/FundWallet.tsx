@@ -1,13 +1,16 @@
 'use client';
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavBar } from "../ui/animateds/NavBar";
 import { FooterAndCtaSection } from "../ui/animateds/FooterAndCtaSection";
+import toast from "react-hot-toast";
+import { useAppContext } from "@/context/AppContext";
 
 export function FundWallet() {
-    const [amount, setAmount] = useState<number | string>('');
+    let [amount, setAmount] = useState<number | string>('');
     const [message, setMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const { walletBalance, refreshUser } = useAppContext();
 
     const handleFundWallet = async () => {
         if (!amount || Number(amount) <= 0) {
@@ -20,27 +23,41 @@ export function FundWallet() {
             setMessage('User not authenticated');
             return;
         }
-        
+
         setIsLoading(true);
         try {
-            const fund = await axios.put(`http://localhost:4000/users/${id}/wallet`, { 
-                amount: Number(amount) 
+            const fund = await axios.put(`http://localhost:4000/users/${id}/wallet`, {
+                amount: Number(amount)
             });
             console.log('Fund response:', fund.data);
             setMessage('Wallet funded successfully!');
-            setAmount('');
+            // setAmount('');
+            await refreshUser();
+            setTimeout(() => {
+                toast.success(`You have recharged ${amount} to your wallet! kindly note on refreshing your wallet may not be refresh or updated due to technical down time. we sincerely apologise`);
+            }, 9000);
         } catch (err) {
             console.error('Error funding wallet:', err);
             setMessage('Failed to fund wallet. Please try again.');
+            toast.error(`Failed to fund wallet. Please try again`)
         } finally {
             setIsLoading(false);
         }
     };
 
+    useEffect(() => {
+        console.log("Updated wallet balance:", walletBalance);
+    }, [walletBalance]);
+
+
     return (
         <div className="min-h-screen flex flex-col bg-black mt-16">
             <NavBar />
-            
+
+            <h1 className="text-blue-500 text-center mt-4 text-2xl">
+                {`${walletBalance ? `Balance: $${walletBalance.toLocaleString()}.00` : 'Fund your wallet'}`}
+            </h1>
+
             <div className="flex-1 flex items-center justify-center p-4 mt-12">
                 <div className="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
                     <div className="p-8 space-y-6">
@@ -66,11 +83,10 @@ export function FundWallet() {
                             <button
                                 onClick={handleFundWallet}
                                 disabled={isLoading || !amount || Number(amount) <= 0}
-                                className={`w-full py-3 px-4 rounded-lg font-medium text-white transition-all duration-200 cursor-pointer ${
-                                    isLoading || !amount || Number(amount) <= 0
-                                        ? 'bg-gray-400 cursor-not-allowed'
-                                        : 'bg-blue-600 hover:bg-blue-700 hover:shadow-md'
-                                }`}
+                                className={`w-full py-3 px-4 rounded-lg font-medium text-white transition-all duration-200 cursor-pointer ${isLoading || !amount || Number(amount) <= 0
+                                    ? 'bg-gray-400 cursor-not-allowed'
+                                    : 'bg-blue-600 hover:bg-blue-700 hover:shadow-md'
+                                    }`}
                             >
                                 {isLoading ? (
                                     <span className="flex items-center justify-center">
@@ -87,11 +103,10 @@ export function FundWallet() {
                         </div>
 
                         {message && (
-                            <div className={`text-center text-sm p-3 rounded-lg ${
-                                message.includes('successfully') 
-                                    ? 'bg-green-100 text-green-700' 
-                                    : 'bg-red-100 text-red-700'
-                            }`}>
+                            <div className={`text-center text-sm p-3 rounded-lg ${message.includes('successfully')
+                                ? 'bg-green-100 text-green-700'
+                                : 'bg-red-100 text-red-700'
+                                }`}>
                                 {message}
                             </div>
                         )}

@@ -15,6 +15,8 @@ interface Player {
     dribble: number;
     goals: number;
     position: string;
+    club: string;
+    user: string;
 }
 
 interface League {

@@ -30,13 +30,13 @@ export const userSignup: SignupField[] = [
     placeholder: "Enter your email",
     required: true,
   },
-  {
-    name: "contact",
-    type: "number",
-    label: "Contact",
-    placeholder: "Enter your contact",
-    required: true,
-  },
+  // {
+  //   name: "contact",
+  //   type: "number",
+  //   label: "Contact",
+  //   placeholder: "Enter your contact",
+  //   required: true,
+  // },
   {
     name: "league",
     type: "text",
@@ -51,13 +51,13 @@ export const userSignup: SignupField[] = [
     placeholder: "Enter your team",
     required: true,
   },
-  {
-    name: "password",
-    type: "password",
-    label: "Password",
-    placeholder: "Enter your password",
-    required: true,
-  },
+  // {
+  //   name: "password",
+  //   type: "password",
+  //   label: "Password",
+  //   placeholder: "Enter your password",
+  //   required: true,
+  // },
   {
     name: "countryClub",
     type: "select",
