@@ -1,18 +1,18 @@
 "use client"
 
-import type { Control } from "react-hook-form"
+import type { Control, FieldValues, Path } from "react-hook-form"
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import type { SignupField } from "@/data/signupForm/signIn"
 
-interface FormFieldRendererProps extends SignupField {
-  control: Control<any>
+interface FormFieldRendererProps<T extends FieldValues> extends SignupField {
+  control: Control<T>
   options?: { value: string; label: string }[]
   disabled?: boolean
 }
 
-export function FormFieldRenderer({
+export function FormFieldRenderer<T extends FieldValues>({
   name,
   type,
   label,
@@ -21,11 +21,11 @@ export function FormFieldRenderer({
   control,
   options,
   disabled = false,
-}: FormFieldRendererProps) {
+}: FormFieldRendererProps<T>) {
   return (
     <FormField
       control={control}
-      name={name}
+      name={name as Path<T>}
       render={({ field }) => (
         <FormItem>
           <FormLabel>
@@ -51,7 +51,7 @@ export function FormFieldRenderer({
                 type={type}
                 placeholder={placeholder}
                 {...field}
-                value={type === "number" ? field.value.toString() : field.value}
+                value={type === "number" && field.value !== undefined ? field.value : field.value}
                 disabled={disabled}
               />
             )}

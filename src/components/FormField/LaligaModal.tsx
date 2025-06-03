@@ -53,11 +53,17 @@ export function LaligaModal({ isOpen, onClose, player }: LaligaProps) {
       const sendRes = await axios.post('http://localhost:4000/wallet', payload);
       console.log(sendRes.data);
       toast.success('Transaction completed successfully!');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.log('axios', error);
-      const errorMessage = error.response?.data?.message ||
-        error.message ||
-        'An unknown error occurred';
+
+      let errorMessage = 'An unknown error occurred';
+      if (axios.isAxiosError(error)) {
+        errorMessage =
+          error.response?.data?.message || error.message || errorMessage;
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+
       toast.error(errorMessage);
       setTimeout(() => {
         router.push('/wallet');

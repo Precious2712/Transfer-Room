@@ -5,22 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/button";
 import { LaligaModal } from "./LaligaModal";
 import { useState } from "react";
-
-interface Player {
-    name: string;
-    price: number;
-    nationality: string;
-    image?: string;
-    assist: number;
-    dribble: number;
-    goals: number;
-    position: string;
-}
-
-interface League {
-    club: string;
-    players: Player[];
-}
+import type { Player } from "@/data/country-club/topLeague"; 
 
 export function Bundesliga() {
     const { germany, selectedClub } = useAppContext();
@@ -38,15 +23,17 @@ export function Bundesliga() {
         );
     }
 
-    const selectedClubData = germany?.leagueName?.find((league: League) => league.club === selectedClub);
+    const selectedClubData = germany?.leagueName?.find(club => club.club === selectedClub);
 
     if (!selectedClubData) {
         return (
             <div className="bg-slate-800 p-8 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold mb-4 text-white">Club Details</h2>
                 <div className="bg-red-900/20 border border-red-500 p-6 rounded">
-                    <p className="text-red-400 text-lg">❌ Club "{selectedClub}" not found.</p>
-                    <p className="text-slate-400 mt-2">Available clubs: {germany?.leagueName?.map((l: any) => l.club).join(", ")}</p>
+                    <p className="text-red-400 text-lg">❌ Club &quot;{selectedClub}&quot; not found.</p>
+                    <p className="text-slate-400 mt-2">
+                        Available clubs: {germany?.leagueName?.map(club => club.club).join(", ")}
+                    </p>
                 </div>
             </div>
         );
@@ -74,7 +61,7 @@ export function Bundesliga() {
             <AnimatePresence>
                 {selectedClubData.players.length > 0 ? (
                     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                        {selectedClubData.players.map((player: Player, i: number) => (
+                        {selectedClubData.players.map((player, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 20 }}

@@ -96,7 +96,7 @@ export function NavBar() {
             </motion.nav>
 
             {show && (
-                <motion.nav className={`fixed z-50 top-16 left-0 w-[100%] h-[50vh] bg-blue-700 py-8 px-4 text-white transition-all duration-500 ease-in-out md:hidden lg:hidden ${show ? "translate-x-0" : "-translate-x-full"}`}>
+                <motion.nav className={`fixed z-50 top-16 left-0 w-[100%] h-[58vh] bg-blue-700 py-8 px-4 text-white transition-all duration-500 ease-in-out md:hidden lg:hidden ${show ? "translate-x-0" : "-translate-x-full"}`}>
                     <div className="flex flex-col gap-3">
                         {[
                             { label: "England", href: "/england" },

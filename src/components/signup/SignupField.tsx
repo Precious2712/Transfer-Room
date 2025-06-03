@@ -42,7 +42,7 @@ export function SignupField() {
                 ...values
             }
 
-            const signupApi = await axios.post('http://localhost:4000/users/register', payload);
+            const signupApi = await axios.post('https://nest-js-5h6w.onrender.com/users/register', payload);
             const db = signupApi.data
             console.log(db);
 

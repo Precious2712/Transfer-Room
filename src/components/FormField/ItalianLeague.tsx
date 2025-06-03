@@ -20,12 +20,14 @@ export function ItalianLeague() {
                     </h1>
 
                     <div className="space-y-6">
-                        {italy?.leagueName?.map((league: any, i: number) => (
+                        {italy?.leagueName?.map((league, i) => (
                             <div key={i}>
-                                <h2 onClick={() => handleSelectClub(league.club)} className=" text-sm font-semibold mb-2 text-slate-300 cursor-pointer">
-                                    {league?.club}
+                                <h2
+                                    onClick={() => handleSelectClub(league.club)}
+                                    className="text-sm font-semibold mb-2 text-slate-300 cursor-pointer"
+                                >
+                                    {league.club}
                                 </h2>
-
                             </div>
                         ))}
                     </div>
@@ -38,11 +40,11 @@ export function ItalianLeague() {
 
                     <div className="overflow-x-auto px-4 no-scrollbar mt-10">
                         <div className="flex gap-4 min-w-max">
-                            {italy?.leagueName?.map((league: any, i: number) => (
+                            {italy?.leagueName?.map((league, i) => (
                                 <div key={i}>
                                     <h2
                                         onClick={() => handleSelectClub(league.club)}
-                                        className="text-sm font-semibold text-white cursor-pointer whitespace-nowrap hover:underline"
+                                        className="text-sm font-semibold mb-2 text-slate-300 cursor-pointer"
                                     >
                                         {league.club}
                                     </h2>

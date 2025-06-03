@@ -2,18 +2,20 @@
 
 import axios from 'axios';
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { topLeague } from '@/data/country-club/topLeague';
+import { userData } from '@/data/country-club/userData';
 
 type AppContextType = {
   handleSelectClub: (club: string) => void;
   refreshUser: () => void;
-  user: any | null;
+  user: userData | null; 
   loading: boolean;
   error: string | null;
-  eng: any | null;
-  spain: any | null;
-  italy: any;
-  france: any;
-  germany: any;
+  eng: topLeague | null;
+  spain: topLeague | null;
+  italy: topLeague | null;
+  france: topLeague | null;
+  germany: topLeague | null;
   selectedClub: string;
   walletBalance: number;
   setWalletBalance: React.Dispatch<React.SetStateAction<number>>;
@@ -26,16 +28,17 @@ type AppProviderProps = {
 };
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-  const [user, setUser] = useState<any | null>(null);
+  const [user, setUser] = useState<userData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedClub, setSelectedClub] = useState<string>('');
-  const [eng, setEng] = useState();
-  const [spain, setSpain] = useState();
-  const [italy, setItaly] = useState();
-  const [france, setFrance] = useState();
-  const [germany, setGermany] = useState();
-  let [walletBalance, setWalletBalance] = useState<number>(0);
+  const [eng, setEng] = useState<topLeague | null>(null);
+  const [spain, setSpain] = useState<topLeague | null>(null);
+  const [italy, setItaly] = useState<topLeague | null>(null);
+  const [france, setFrance] = useState<topLeague | null>(null);
+  const [germany, setGermany] = useState<topLeague | null>(null);
+
+  const [walletBalance, setWalletBalance] = useState<number>(0);
 
   const getUser = async () => {
     try {
@@ -45,7 +48,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         return;
       }
 
-      const response = await axios.get('http://localhost:4000/nenjas', {
+      const response = await axios.get('https://nest-js-5h6w.onrender.com/nenjas', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

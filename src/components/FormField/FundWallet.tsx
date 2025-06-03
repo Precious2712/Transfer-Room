@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { useAppContext } from "@/context/AppContext";
 
 export function FundWallet() {
-    let [amount, setAmount] = useState<number | string>('');
+    const [amount, setAmount] = useState<number | string>('');
     const [message, setMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const { walletBalance, refreshUser } = useAppContext();
@@ -26,7 +26,7 @@ export function FundWallet() {
 
         setIsLoading(true);
         try {
-            const fund = await axios.put(`http://localhost:4000/users/${id}/wallet`, {
+            const fund = await axios.put(`https://nest-js-5h6w.onrender.com/users/${id}/wallet`, {
                 amount: Number(amount)
             });
             console.log('Fund response:', fund.data);

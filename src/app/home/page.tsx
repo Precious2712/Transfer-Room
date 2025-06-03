@@ -13,7 +13,7 @@ import { NavBar } from "@/components/ui/animateds/NavBar"
 export default function Component() {
     const [currentLeagueIndex, setCurrentLeagueIndex] = useState(0);
     const [currentClubIndex, setCurrentClubIndex] = useState(0);
-    
+
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentClubIndex((prev) => {
@@ -23,7 +23,7 @@ export default function Component() {
         }, 4000)
 
         return () => clearInterval(interval)
-    }, [currentLeagueIndex, leagues])
+    }, [currentLeagueIndex]);
 
     // Reset club index when league changes
     useEffect(() => {
@@ -132,7 +132,7 @@ export default function Component() {
                         </motion.h1>
 
                         <motion.p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed" variants={itemVariants}>
-                            The most advanced platform for football transfers. Connect with top clubs across Europe's Big 5 leagues
+                            The most advanced platform for football transfers. Connect with top clubs across {`Europe's Big 5 leagues`}
                             and discover world-class talent with AI-powered insights.
                         </motion.p>
 
@@ -186,12 +186,13 @@ export default function Component() {
                     >
                         <div className="text-center flex-1">
                             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                                Europe's{" "}
+                                {`Europe's `}
                                 <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
                                     Big 5
                                 </span>{" "}
                                 Leagues
                             </h2>
+
                             <p className="text-xl text-slate-400">Discover elite clubs and their world-class talent</p>
                         </div>
                     </motion.div>

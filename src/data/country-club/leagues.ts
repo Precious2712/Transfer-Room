@@ -113,7 +113,7 @@ export const leagues: League[] = [
         clubs: [
             {
                 name: "Juventus",
-                logo: "",
+                logo: "https://images.unsplash.com/photo-1583059439491-1299c517f08d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anV2ZW50dXMlMjBjbHViJTIwbG9nb3xlbnwwfHwwfHx8MA%3D%3D",
                 image: "https://images.unsplash.com/photo-1550591852-c88075851174?w=1920&q=100",
                 description:
                     "The most successful club in Italian football, known for their winning mentality and star signings.",
@@ -122,8 +122,8 @@ export const leagues: League[] = [
             },
             {
                 name: "AC Milan",
-                logo: "/logos/ac-milan.svg",
-                image: "",
+                logo: "https://images.unsplash.com/photo-1694453722819-9fcc15042f2a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fEFDJTIwbWlsYW4lMjBjbHViJTIwbG9nb3xlbnwwfHwwfHx8MA%3D%3D",
+                image: "https://images.unsplash.com/photo-1693517343607-e7dced201648?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YWMlMjBtaWxhbiUyMHN0YWRpdW18ZW58MHx8MHx8fDA%3D",
                 description:
                     "Seven-time European Cup winners with a rich history of legendary players and memorable victories.",
                 founded: "1899",
@@ -131,15 +131,15 @@ export const leagues: League[] = [
             },
             {
                 name: "Inter Milan",
-                logo: "/logos/inter-milan.svg",
-                image: "https://media.gettyimages.com/id/1255335703/photo/choreography-of-fc-inter-supporters-at-san-siro-stadium-during-the-uefa-champions-league-semi.jpg?s=612x612&w=0&k=20&c=AaFxqoFG62L-nudETBGMllQ1c4GvRwdO4pfGU_02u0c=",
+                logo: "https://plus.unsplash.com/premium_photo-1700830328095-26c5a1c053b8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8SW50ZXIlMjBtaWxhbiUyMGNsdWIlMjBsb2dvfGVufDB8fDB8fHww",
+                image: "https://images.unsplash.com/photo-1430232324554-8f4aebd06683?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG5hcG9saSUyMHN0YWRpdW18ZW58MHx8MHx8fDA%3D",
                 description: "The Nerazzurri, known for their passionate fanbase and recent Serie A championship success.",
                 founded: "1908",
                 stadium: "San Siro",
             },
             {
                 name: "Napoli",
-                logo: "/logos/napoli.svg",
+                logo: "https://plus.unsplash.com/premium_photo-1675876811802-fed0becd1e40?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fG5hcG9saSUyMGNsdWIlMjBsb2dvJTIwb24lMjBwbGF5ZXIlMjBzaGlydHxlbnwwfHwwfHx8MA%3D%3D",
                 image: "https://media.gettyimages.com/id/2216732094/photo/naples-italy-scott-mctominay-of-napoli-celebrates-scoring-his-teams-first-goal-during-the.jpg?s=612x612&w=0&k=20&c=xKA1vNxMMILxm_-Cz-jF1_JoTw85pf3cO-uyBcKijC8=",
                 description: "Southern Italy's pride, famous for their attacking football and passionate supporters.",
                 founded: "1926",
@@ -155,32 +155,32 @@ export const leagues: League[] = [
         clubs: [
             {
                 name: "Bayern Munich",
-                logo: "/logos/bayern-munich.svg",
-                image: "/stadiums/allianz-arena.jpg",
+                logo: "https://www.shutterstock.com/image-photo/bangkokthailandseptember-9-bayern-munich-logo-600nw-2043445760.jpg",
+                image: "https://images.unsplash.com/photo-1633244116871-2823130f5529?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fEJheWVybiUyMHBsYXllcnMlMjBvbiUyMGZpZWxkc3xlbnwwfHwwfHx8MA%3D%3D",
                 description: "German football's dominant force, consistently competing at the highest level in Europe.",
                 founded: "1900",
                 stadium: "Allianz Arena",
             },
             {
                 name: "Borussia Dortmund",
-                logo: "/logos/borussia-dortmund.svg",
-                image: "/stadiums/signal-iduna-park.jpg",
+                logo: "https://thumbs.dreamstime.com/b/borussia-dortmund-emblem-german-football-club-football-shirt-86191691.jpg",
+                image: "https://images.unsplash.com/photo-1550769839-670461c55ae3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Qm9ydXNzaWElMjBEb3J0bXVuZCUyMG9uJTIwZmllbGRzfGVufDB8fDB8fHww",
                 description: "The Yellow Wall's home, known for developing young talent and electric atmosphere.",
                 founded: "1909",
                 stadium: "Signal Iduna Park",
             },
             {
                 name: "RB Leipzig",
-                logo: "/logos/rb-leipzig.svg",
-                image: "/stadiums/red-bull-arena.jpg",
+                logo: "https://static1.cdn-subsidesports.com/2/media/catalog/product/cache/38d4094f49a5c2931b615f53f1250097/a/8/a8dcc574c91b9ab32249e4b96d28ad6eb812f318e202e31245240debf045cb48.jpeg",
+                image: "https://plus.unsplash.com/premium_photo-1684713510655-e6e31536168d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8UkIlMjBMZWlwemlnJTIwJTIwc3RhZGl1bXxlbnwwfHwwfHx8MA%3D%3D",
                 description: "The modern success story of German football with innovative recruitment and tactics.",
                 founded: "2009",
                 stadium: "Red Bull Arena",
             },
             {
                 name: "Bayer Leverkusen",
-                logo: "/logos/bayer-leverkusen.svg",
-                image: "/stadiums/bayarena.jpg",
+                logo: "https://plus.unsplash.com/premium_photo-1676901712467-3d6be41dd17b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzN8fEJheWVyJTIwTGV2ZXJrdXNlbiUyMGxvZ298ZW58MHx8MHx8fDA%3D",
+                image: "https://images.unsplash.com/photo-1620801564906-8cec5c428965?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fEJheWVyJTIwTGV2ZXJrdXNlbiUyMHN0YWRpdW18ZW58MHx8MHx8fDA%3D",
                 description: "Known for their attacking philosophy and ability to compete with Germany's elite clubs.",
                 founded: "1904",
                 stadium: "BayArena",
@@ -196,8 +196,8 @@ export const leagues: League[] = [
         clubs: [
             {
                 name: "Paris Saint-Germain",
-                logo: "/logos/psg.svg",
-                image: "/stadiums/parc-des-princes.jpg",
+                logo: "https://images.prodirectsport.com/ProductImages/Main/279993_Main_Thumb_1407686.jpg",
+                image: "https://images.unsplash.com/photo-1610065132656-bbb6b4bf0da1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8UGFyaXMlMjBTYWludCUyMEdlcm1haW58ZW58MHx8MHx8fDA%3D",
                 description:
                     "French giants with global superstars, dominating domestic football and pursuing European glory.",
                 founded: "1970",
@@ -205,24 +205,24 @@ export const leagues: League[] = [
             },
             {
                 name: "Olympique Marseille",
-                logo: "/logos/marseille.svg",
-                image: "/stadiums/velodrome.jpg",
+                logo: "https://plus.unsplash.com/premium_photo-1700520223949-31b695c57079?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8T2x5bXBpcXVlJTIwTWFyc2VpbGxlJTIwbG9nb3xlbnwwfHwwfHx8MA%3D%3D",
+                image: "https://images.unsplash.com/photo-1529848891152-72fea52a8f03?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8T2x5bXBpcXVlJTIwTWFyc2VpbGxlJTIwcGxheWVyc3xlbnwwfHwwfHx8MA%3D%3D",
                 description: "France's most passionate club with a rich European history and devoted fanbase.",
                 founded: "1899",
                 stadium: "Orange Vélodrome",
             },
             {
                 name: "AS Monaco",
-                logo: "/logos/monaco.svg",
-                image: "/stadiums/stade-louis-ii.jpg",
+                logo: "https://media.istockphoto.com/id/1166572313/photo/inscription-made-in-monaco-the-flag-of-monaco-female-hands-holding-a-heart-shaped-box-white.webp?a=1&b=1&s=612x612&w=0&k=20&c=A-OVPlE4T-MrTlgdc3y3nziaGhgkUe9-xzfxsLmo7b0=",
+                image: "https://www.santosfootballplanet.com/uploads/_contentImageSlider/Klein-louisIImonacoaerialshutterstock.jpg?v=1679502070",
                 description: "The principality's club, famous for developing young talents who become global superstars.",
                 founded: "1924",
                 stadium: "Stade Louis II",
             },
             {
                 name: "Olympique Lyon",
-                logo: "/logos/lyon.svg",
-                image: "/stadiums/groupama-stadium.jpg",
+                logo: "https://images.unsplash.com/photo-1701500096456-28186c4a306d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fE9seW1waXF1ZSUyMEx5b24lMjBsb2dvfGVufDB8fDB8fHww",
+                image: "https://monacolife.net/wp-content/uploads/2022/10/312548355_1099233904063599_8821874044110392138_n-e1666859921490.jpg",
                 description: "Former French champions known for their excellent academy and women's football dominance.",
                 founded: "1950",
                 stadium: "Groupama Stadium",

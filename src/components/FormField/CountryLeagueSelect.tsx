@@ -1,6 +1,6 @@
 "use client"
 
-import { type Control, useWatch } from "react-hook-form"
+import { type Control, type UseFormSetValue, useWatch } from "react-hook-form"
 import { FormFieldRenderer } from "./FormFieldRenderer"
 import { countryClubOptions, countryLeagueMap, type CountryClub } from "@/data/country-club/clubs"
 import { getTeamsForLeague } from "@/data/country-club/team"
@@ -10,7 +10,7 @@ import { motion } from "framer-motion"
 
 interface CountryLeagueSelectProps {
   control: Control<SignupFormData>
-  setValue: (name: any, value: any, options?: any) => void
+  setValue: UseFormSetValue<SignupFormData> 
 }
 
 export function CountryLeagueSelect({ control, setValue }: CountryLeagueSelectProps) {
@@ -25,7 +25,6 @@ export function CountryLeagueSelect({ control, setValue }: CountryLeagueSelectPr
     name: "league",
   })
 
-  // Update the league field when the country changes
   useEffect(() => {
     if (selectedCountry && countryLeagueMap[selectedCountry as CountryClub]) {
       const league = countryLeagueMap[selectedCountry as CountryClub]
@@ -33,14 +32,12 @@ export function CountryLeagueSelect({ control, setValue }: CountryLeagueSelectPr
         shouldValidate: true,
       })
 
-      // Reset team when league changes
       setValue("team", "", {
         shouldValidate: true,
       })
     }
   }, [selectedCountry, setValue])
 
-  // Get teams for the selected league
   const teamsForLeague = selectedLeague ? getTeamsForLeague(selectedLeague) : []
   const teamOptions = teamsForLeague.map((team) => ({
     value: team,

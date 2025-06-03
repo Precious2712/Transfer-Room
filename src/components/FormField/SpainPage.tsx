@@ -19,12 +19,14 @@ export function SpainPage() {
                     </h1>
 
                     <div className="space-y-6">
-                        {spain?.leagueName?.map((league: any, i: number) => (
+                        {spain?.leagueName?.map((league, i) => (
                             <div key={i}>
-                                <h2 onClick={() => handleSelectClub(league.club)} className=" text-sm font-semibold mb-2 text-slate-300 cursor-pointer">
-                                    {league?.club}
+                                <h2
+                                    onClick={() => handleSelectClub(league.club)}
+                                    className="text-sm font-semibold mb-2 text-slate-300 cursor-pointer"
+                                >
+                                    {league.club}
                                 </h2>
-
                             </div>
                         ))}
                     </div>
@@ -37,11 +39,11 @@ export function SpainPage() {
 
                     <div className="overflow-x-auto px-4 no-scrollbar mt-10">
                         <div className="flex gap-4 min-w-max">
-                            {spain?.leagueName?.map((league: any, i: number) => (
+                            {spain?.leagueName?.map((league, i) => (
                                 <div key={i}>
                                     <h2
                                         onClick={() => handleSelectClub(league.club)}
-                                        className="text-sm font-semibold text-white cursor-pointer whitespace-nowrap hover:underline"
+                                        className="text-sm font-semibold mb-2 text-slate-300 cursor-pointer"
                                     >
                                         {league.club}
                                     </h2>
