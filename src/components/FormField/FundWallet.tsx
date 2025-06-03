@@ -10,7 +10,7 @@ export function FundWallet() {
     const [amount, setAmount] = useState<number | string>('');
     const [message, setMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const { walletBalance, refreshUser } = useAppContext();
+    const { walletBalance } = useAppContext();
 
     const handleFundWallet = async () => {
         if (!amount || Number(amount) <= 0) {
@@ -32,7 +32,6 @@ export function FundWallet() {
             console.log('Fund response:', fund.data);
             setMessage('Wallet funded successfully!');
             // setAmount('');
-            await refreshUser();
             setTimeout(() => {
                 toast.success(`You have recharged ${amount} to your wallet! kindly note on refreshing your wallet may not be refresh or updated due to technical down time. we sincerely apologise`);
             }, 9000);

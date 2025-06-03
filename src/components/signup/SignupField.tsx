@@ -113,7 +113,7 @@ export function SignupField() {
                                 transition={{ delay: 0.5 }}
                                 className="text-gray-600"
                             >
-                                Welcome to your team. You'll receive a confirmation email shortly.
+                                Welcome to your team. You&apos;ll receive a confirmation email shortly.
                             </motion.p>
                         </motion.div>
                     ) : (
