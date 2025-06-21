@@ -96,7 +96,7 @@ export function NavBar() {
             </motion.nav>
 
             {show && (
-                <motion.nav className={`fixed z-50 top-16 left-0 w-[100%] h-[58vh] bg-blue-700 py-8 px-4 text-white transition-all duration-500 ease-in-out md:hidden lg:hidden ${show ? "translate-x-0" : "-translate-x-full"}`}>
+                <motion.nav className={`fixed z-50 top-16 left-0 w-[100%] h-[] py-6 bg-blue-700 px-4 text-white transition-all duration-500 ease-in-out md:hidden lg:hidden ${show ? "translate-x-0" : "-translate-x-full"}`}>
                     <div className="flex flex-col gap-3">
                         {[
                             { label: "England", href: "/england" },
@@ -109,7 +109,7 @@ export function NavBar() {
                         ].map((item, index) => (
                             <Link href={item.href} key={item.label}>
                                 <motion.div
-                                    className="text-slate-300 hover:text-white transition-colors ml-6 cursor-pointer"
+                                    className="text-slate-300 hover:text-white transition-colors ml-4 cursor-pointer"
                                     initial={{ opacity: 0, y: -20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.1 * index, duration: 0.5 }}
@@ -121,7 +121,7 @@ export function NavBar() {
                         ))}
                     </div>
                     <motion.div
-                        className="flex justify-center items-center space-x-4"
+                        className=""
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
@@ -131,7 +131,7 @@ export function NavBar() {
                         </Button>
                         <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
                             <Link href='/'>
-                                <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white cursor-pointer">
+                                <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white cursor-pointer w-full">
                                     sign up
                                 </Button>
                             </Link>
